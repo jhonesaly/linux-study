@@ -25,3 +25,4 @@ SO de uso pessoal (Desktop 2019):
 
 As máquinas virtuais são computadores de software com a mesma funcionalidade que os computadores físicos. Assim como os computadores físicos, elas executam aplicativos e um sistema operacional. No entanto, as máquinas virtuais são arquivos de computador executados em um computador físico e se comportam se um computador físico.
 
+instalando virtual machine...
