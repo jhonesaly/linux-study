@@ -57,3 +57,10 @@ Segurança/Penetração de testes:
 - Parrot Security OS: Uma distribuição baseada no Debian para testes de segurança, com suporte a muitos recursos avançados.
 - BackBox: Uma distribuição baseada no Ubuntu com suporte a testes de segurança e ferramentas avançadas para análise de rede.
 - DEFT Linux: Uma distribuição para análise digital e investigações forenses, com suporte a muitas ferramentas e recursos avançados.
+
+---
+# Comandos
+
+- sudo: executar como super usuário
+- reboot: reseta máquina
+- shutdown: desligar máquina
