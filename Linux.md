@@ -62,5 +62,87 @@ Segurança/Penetração de testes:
 # Comandos
 
 - sudo: executar como super usuário
-- reboot: reseta máquina
-- shutdown: desligar máquina
+
+Gerenciamento de arquivos e diretórios:
+
+- ls - Lista o conteúdo de um diretório
+- cd - Muda para um diretório específico
+- pwd - Mostra o caminho absoluto do diretório atual
+- mkdir - Cria um novo diretório
+- rmdir - Remove um diretório vazio
+- touch - Cria um novo arquivo
+- cp - Copia um arquivo ou diretório
+- mv - Move ou renomeia um arquivo ou diretório
+- rm - Remove um arquivo ou diretório
+- find - Procura por arquivos ou diretórios em um local específico
+- grep - Procura por uma string específica em um arquivo ou conjunto de arquivos
+- diff - Exibe as diferenças entre dois arquivos
+
+Manipulação de arquivos:
+
+- echo - Exibe uma mensagem na tela
+- cat - Exibe o conteúdo de um arquivo
+- less - Exibe o conteúdo de um arquivo com rolagem
+- head - Exibe as primeiras linhas de um arquivo
+- tail - Exibe as últimas linhas de um arquivo
+
+Gerenciamento de processos:
+
+- ps - Lista os processos em execução
+- kill - Encerra um processo pelo ID do processo
+- top - Exibe informações sobre processos em execução e uso de recursos
+- killall - Encerra vários processos pelo nome
+- nice - Altera a prioridade de um processo
+- renice - Altera a prioridade de um processo existente
+
+Gerenciamento de sistema:
+
+- shutdown - Desliga o sistema
+- reboot - Reinicia o sistema
+- apt-get - Gerencia pacotes no sistema Ubuntu
+- free - Exibe informações sobre o uso de memória do sistema
+- df - Exibe informações sobre o uso de espaço em disco
+- du - Exibe informações sobre o uso de espaço em disco para um diretório específico
+
+Gerenciamento de usuários e grupos:
+
+- adduser - Adiciona um novo usuário ao sistema
+- addgroup - Adiciona um novo grupo ao sistema
+- usermod - Modifica as informações de um usuário existente
+- groupmod - Modifica as informações de um grupo existente
+- deluser - Remove um usuário do sistema
+- delgroup - Remove um grupo do sistema
+
+Gerenciamento de permissões:
+
+- chmod - Modifica as permissões de um arquivo ou diretório
+- chown - Modifica o proprietário de um arquivo ou diretório
+- chgrp - Modifica o grupo de um arquivo ou diretório
+
+Gerenciamento de pacotes:
+
+- apt-cache - Exibe informações sobre pacotes disponíveis no sistema
+- apt-get update - Atualiza a lista de pacotes disponíveis no sistema
+- apt-get install - Instala um pacote específico no sistema
+- apt-get remove - Remove um pacote específico do sistema
+
+Gerenciamento de rede:
+
+- ifconfig - Exibe informações sobre as interfaces de rede
+- ping - Testa a conectividade de rede para um endereço específico
+- traceroute - Exibe o caminho de uma mensagem de rede para um endereço específico
+
+Gerenciamento de serviços:
+
+- systemctl - Gerencia serviços no sistema Ubuntu
+- service - Gerencia serviços antigos no sistema Ubuntu
+- systemctl status - Exibe o status de um serviço específico
+- systemctl start - Inicia um serviço específico
+- systemctl stop - Interrompe um serviço específico
+- systemctl restart - Reinicia um serviço específico
+
+Gerenciamento de sessão:
+
+- clear - Limpa a tela do terminal
+- history - Exibe o histórico de comandos recentes
+- !n - Executa o comando n do histórico de comandos
