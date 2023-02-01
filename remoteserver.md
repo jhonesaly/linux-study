@@ -10,4 +10,11 @@ Abra a sua virtual machine e coloque o comando
 
 no endereço enp0s3, anote o ip informado em inet
 
-Execute o putty.exe e no campo 
+Execute o putty.exe e no campo IP adress, coloque o ip informado, como na imagem:
+
+![putty session](/images/puttysession.png)
+
+# Server linux na AWS
+
+Primeiro, crie uma conta na AWS <https://aws.amazon.com/pt/> (é necessário registrar cartão de crédito, ainda que só use serviços gratuitos)
+
