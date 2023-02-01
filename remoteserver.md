@@ -2,6 +2,10 @@
 
 # Server linux na própria máquina (Virtual Machine)
 
+configure a virtual machine criada para a conexão estar em modo brige, como na imagem:
+
+![configurações de rede da VM](/images/virtualmachine1.png)
+
 Se estiver usando windows, é necessário baixar o putty em <https://www.putty.org/>. Vá em downloads e, para facilitar, baixe o .exe (putty.exe) para sua versão adequada, provavelmente a primeira opção (64-bit x86) e não o instalador .msi.
 
 Abra a sua virtual machine e coloque o comando 
@@ -17,4 +21,14 @@ Execute o putty.exe e no campo IP adress, coloque o ip informado, como na imagem
 # Server linux na AWS
 
 Primeiro, crie uma conta na AWS <https://aws.amazon.com/pt/> (é necessário registrar cartão de crédito, ainda que só use serviços gratuitos)
+
+No menu "esecutar instância", clique em "executar instância"
+
+crie um nome para o servidor e selecione o tipo de servidor e suas especificações (aqui, use uma qualificada para nível gratuito) conforme a imagem:
+
+![criando server na aws](/images/aws1.png)
+
+No menu par de chaves, clique em "criar nova chave", dê um nome para a mesma. Se for usar um linux para conectar ao servidor, baixe o .pem para usar o openssh. Se for usar widowns, baixe o .ppk para usar o putty.
+
+Se a chave que você baixou for do tipo .pem, mas quer usar no windows (no putty), é necessário fazer o download, no mesmo site, do puttygen.exe para a versão adequada e convertê-la.
 
