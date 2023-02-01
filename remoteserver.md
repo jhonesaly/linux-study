@@ -28,7 +28,15 @@ crie um nome para o servidor e selecione o tipo de servidor e suas especificaç�
 
 ![criando server na aws](/images/aws1.png)
 
-No menu par de chaves, clique em "criar nova chave", dê um nome para a mesma. Se for usar um linux para conectar ao servidor, baixe o .pem para usar o openssh. Se for usar widowns, baixe o .ppk para usar o putty.
+No menu par de chaves, clique em "criar nova chave", dê um nome para a mesma. Se for usar um linux para conectar ao servidor, baixe o .pem para usar o openssh. Se for usar widowns, baixe o .ppk para usar o putty. Ao clicar em "criar par de chaves", a chave sera baixada automaticamente.
 
 Se a chave que você baixou for do tipo .pem, mas quer usar no windows (no putty), é necessário fazer o download, no mesmo site, do puttygen.exe para a versão adequada e convertê-la.
+
+deixe a caixa "permitir tráfego SSH de " habilitada e permite "qualquer lugar"
+
+Para acessar via putty, configure a conexão adicionando a chave conforme a imagem:
+
+![putty session conection](/images/puttysession2.png)
+
+Não se esqueça de, quando terminar a atividade, encerrar a instância na AWS, pois pode ser cobrado alguma tarifa por excesso de uso.
 
