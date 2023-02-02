@@ -94,6 +94,8 @@ Segurança/Penetração de testes:
 
 - sudo: executar como super usuário
 - date: informa a data e hora
+- man cmd: indica o manual do comando (man ls)
+- cmd --help: mostra resumo do comando e parâmetros cabíveis (ls --help)
 
 Gerenciamento de arquivos e diretórios:
 
