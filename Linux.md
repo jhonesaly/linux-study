@@ -19,7 +19,26 @@ Formas de se comunicar com o kernel:
 
 > Servidores raramente possuem ambiente gráfico instalado
 
-## Distribuições
+## Terminal
+
+se na linha de comando estiver isso:
+
+    jhones@ubuntuserver1:~$
+
+- jhones é o nome do usuário
+- @ = conectado em
+- ubuntuserver1 é o nome da máquina
+- ~ indica diretório atual 
+    - ~ = /home/jhones
+    - / = raiz
+- $ indica o tipo de usuário
+    - '$' = usuário com restrição
+    - '#' = usuário sem restrições (superusuário)
+
+> O Linux é capital sensitive, então faz diferença se a letra é maiúscula ou minúscula.
+
+---
+# Distribuições
 
 As distros são pacote que incluem o kernel Linux mais uma seleção de aplicativos mantidos por uma empresa ou comunidade.
 
@@ -62,6 +81,7 @@ Segurança/Penetração de testes:
 # Comandos
 
 - sudo: executar como super usuário
+- date: informa a data e hora
 
 Gerenciamento de arquivos e diretórios:
 
@@ -143,6 +163,6 @@ Gerenciamento de serviços:
 
 Gerenciamento de sessão:
 
-- clear - Limpa a tela do terminal
+- clear (ctrl + L)- Limpa a tela do terminal
 - history - Exibe o histórico de comandos recentes
 - !n - Executa o comando n do histórico de comandos
