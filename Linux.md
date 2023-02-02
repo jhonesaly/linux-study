@@ -37,6 +37,18 @@ se na linha de comando estiver isso:
 
 > O Linux é capital sensitive, então faz diferença se a letra é maiúscula ou minúscula.
 
+As cores padrão usadas pelo comando "ls" para indicar o tipo de arquivo variam dependendo da configuração do sistema, mas aqui está uma lista comuns:
+
+- Pastas: geralmente exibidas em azul ou ciano
+- Arquivos regulares: geralmente exibidos em branco ou cinza
+- Link simbólicos: geralmente exibidos em verde
+- Dispositivos de caractere: geralmente exibidos em amarelo
+- Dispositivos de bloco: geralmente exibidos em amarelo
+- Arquivos executáveis: geralmente exibidos em vermelho ou laranja
+- Arquivos ocultos: geralmente exibidos em cinza escuro ou com um prefixo "." na frente do nome do arquivo
+
+Essas cores podem ser personalizadas na configuração do seu shell ou usando uma ferramenta como o "dircolors".
+
 ---
 # Distribuições
 
@@ -86,7 +98,11 @@ Segurança/Penetração de testes:
 Gerenciamento de arquivos e diretórios:
 
 - ls - Lista o conteúdo de um diretório
+> após o comando cd, pode clicar duas vezes a tecla tab para mostrar todos os diretórios e facilitar a navegação
+    - ls | more - lista os conteúdos que cabem no visor do terminal e para mostrar mais é necessário clicar enter. (para sair use ctrl + C)
+    - ls p* - lista todos os arquivos e diretórios que começam com p
 - cd - Muda para um diretório específico
+    - cd .. - Muda para o diretório superior
 - pwd - Mostra o caminho absoluto do diretório atual
 - mkdir - Cria um novo diretório
 - rmdir - Remove um diretório vazio
@@ -164,5 +180,6 @@ Gerenciamento de serviços:
 Gerenciamento de sessão:
 
 - clear (ctrl + L)- Limpa a tela do terminal
+> ctrl + L não apaga o terminal, só empurra o que já está no terminal para fora da tela.
 - history - Exibe o histórico de comandos recentes
 - !n - Executa o comando n do histórico de comandos
