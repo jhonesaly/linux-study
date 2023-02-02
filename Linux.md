@@ -110,11 +110,14 @@ Gerenciamento de arquivos e diretórios:
     - cd .. - Muda para o diretório superior
 - pwd - Mostra o caminho absoluto do diretório atual
 - mkdir - Cria um novo diretório
-- rmdir - Remove um diretório vazio
+    - para criar um documento com espaço, é necessário colocar tudo dentro de aspas, se não criará uma pasta para cada palavra.
+- rmdir - Remove um diretório *vazio*
 - touch - Cria um novo arquivo
 - cp - Copia um arquivo ou diretório
 - mv - Move ou renomeia um arquivo ou diretório
-- rm - Remove um arquivo ou diretório
+- rm - exclui um arquivo
+    rm -r - sobe todos arquivos de uma pasta e apaga ela
+    rm -rf - exclui todos os arquivos de uma pasta e a apaga
 - find - Procura por arquivos ou diretórios em um local específico
     - find -name - procura um arquivo pelo nome (ex: find -name arq*)
 - grep - Procura por uma string específica em um arquivo ou conjunto de arquivos
