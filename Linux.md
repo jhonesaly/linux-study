@@ -100,6 +100,7 @@ Segurança/Penetração de testes:
     - sudo passwd root: define a senha do super usuário. 
 - su : muda para superusuário
     - su username: muda para usuário
+- export: altera variáveis de ambiente
 
 
 Gerenciamento de arquivos e diretórios:
@@ -198,5 +199,10 @@ Gerenciamento de sessão:
 
 - clear (ctrl + L)- Limpa a tela do terminal
 > ctrl + L não apaga o terminal, só empurra o que já está no terminal para fora da tela.
-- history - Exibe o histórico de comandos recentes
-- !n - Executa o comando n do histórico de comandos
+- history - Exibe o histórico de comandos recentes (até o 1000)
+    - para repetir o comando, basta ver o número dele no history (ex:184) e digitar ! antes (ex: !184)
+    - !! repete o último comando
+    - !n - Executa o comando n do histórico de comandos
+    - history -c suprime histórico (mas não apaga)
+    - set +o history - faz os comandos serem ocultos, mas não tem como ocultar ação de ocultação.
+    - set -o history - volta ao normal
