@@ -98,9 +98,14 @@ Segurança/Penetração de testes:
 Gerenciamento de arquivos e diretórios:
 
 - ls - Lista o conteúdo de um diretório
-> após o comando cd, pode clicar duas vezes a tecla tab para mostrar todos os diretórios e facilitar a navegação
+    - após o comando cd, pode clicar duas vezes a tecla tab para mostrar todos os diretórios e facilitar a navegação
     - ls | more - lista os conteúdos que cabem no visor do terminal e para mostrar mais é necessário clicar enter. (para sair use ctrl + C)
     - ls p* - lista todos os arquivos e diretórios que começam com p
+    - ls ??? - lista todos as pastas e arquivos com 3 caracteres.
+    - ls arquivo[1-3]* - lista todos os arquivos seguidos de 1,2 e 3 e qualquer extensão (arquivo1.txt, arquivo2.txt, arquivo3.txt)
+    - ls arquivo[2,5]* - lista todos os arquivos seguidos de 2 e 5 e qualquer extensão (arquivo2.txt, arquivo5.txt)
+    - ls arquivo[^3,5]* - lista todos os arquivos menos os de 3 a 5 pois foram negados (arquivo1.txt, arquivo2.txt)
+    - ls /path - lista todos os arquivos dentro do path indicado (ex: ls /sys/kernel)
 - cd - Muda para um diretório específico
     - cd .. - Muda para o diretório superior
 - pwd - Mostra o caminho absoluto do diretório atual
@@ -111,6 +116,7 @@ Gerenciamento de arquivos e diretórios:
 - mv - Move ou renomeia um arquivo ou diretório
 - rm - Remove um arquivo ou diretório
 - find - Procura por arquivos ou diretórios em um local específico
+    - find -name - procura um arquivo pelo nome (ex: find -name arq*)
 - grep - Procura por uma string específica em um arquivo ou conjunto de arquivos
 - diff - Exibe as diferenças entre dois arquivos
 
