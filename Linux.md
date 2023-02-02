@@ -96,6 +96,11 @@ Segurança/Penetração de testes:
 - date: informa a data e hora
 - man cmd: indica o manual do comando (man ls)
 - cmd --help: mostra resumo do comando e parâmetros cabíveis (ls --help)
+- passwd: muda a senha de um usuário
+    - sudo passwd root: define a senha do super usuário. 
+- su : muda para superusuário
+    - su username: muda para usuário
+
 
 Gerenciamento de arquivos e diretórios:
 
@@ -129,6 +134,7 @@ Manipulação de arquivos:
 
 - echo - Exibe uma mensagem na tela
 - cat - Exibe o conteúdo de um arquivo
+- nano /path - abre para edição usando o nano
 - less - Exibe o conteúdo de um arquivo com rolagem
 - head - Exibe as primeiras linhas de um arquivo
 - tail - Exibe as últimas linhas de um arquivo
