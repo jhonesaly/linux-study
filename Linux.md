@@ -178,28 +178,37 @@ Gerenciamento de sistema:
 
 Gerenciamento de usuários e grupos:
 
-- adduser - Adiciona um novo usuário ao sistema
-- addgroup - Adiciona um novo grupo ao sistema
-- usermod -G group1,group2 user1
-    -G - define os grupos (1 e 2) a que o user1 pertence
-- groupmod - Modifica as informações de um grupo existente
-- deluser - Remove um usuário do sistema
-- delgroup - Remove um grupo do sistema
-- useradd convidado1 -c "Convidado 1" -m -s /bin/bash -p $(openssl passwd -6 123)
+- useradd convidado1 -c "Convidado 1" -m -s /bin/bash -p $(openssl passwd -6 123) -G group1
     - -c: cria um comentário, no caso o nome
     - -m: cria pasta home
     - -s /bin/bash: atribui shell ao usuário
     - -p $(openssl passwd -6 123): cria senha não criptografada (123) para o usuário 
     - -e: defina data de encerramento
+    - -G: adiciona a um grupo (group1)
 - userdel -r -f user - remove o usuário "user" e seu diretório
 - chsh: muda o tipo de shell do usuário **atual** (usermod muda de outro)
     - chsh -s: novo login shell para a conta do usuário
 - passwd: muda a senha de um usuário
     - sudo passwd root: define a senha do super usuário. 
 - su : muda para superusuário
-    - su username: muda para usuário    
+    - su username: muda para usuário  
+- groupadd - adiciona um grupo ao sistema
+- groupdel - Remove um grupo vazio do sistema
+- usermod -G group1,group2 user1
+    -G - define os grupos (1 e 2) a que o user1 pertence
+    > não adiciona grupos! Se o usuário pertencia a algum grupo antes e esse grupo não consta nos parâmetros informados, ele sai do grupo a que pertencia.
+- gpasswd -d user1 group1
+    - -d: remove user1 do group1
+- groupmod - Modifica as informações de um grupo existente
+  
 
 Gerenciamento de permissões:
+
+![permissões](/images/permissions.png)
+
+> U - Usuário
+> G - Grupo
+> O - Outros
 
 - chmod - Modifica as permissões de um arquivo ou diretório
 - chown - Modifica o proprietário de um arquivo ou diretório
