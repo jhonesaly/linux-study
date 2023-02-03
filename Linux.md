@@ -204,14 +204,31 @@ Gerenciamento de usuários e grupos:
 
 Gerenciamento de permissões:
 
+- chown user1:group1 dir1/ - Modifica o proprietário de um arquivo ou diretório
+    - user1 - novo dono do diretório
+    - group1 - novo grupo do diretório
+    - dir1 - diretório ao qual se aplicarão as mudanças
+- chmod 750 adm/- Modifica as permissões de um arquivo ou diretório
+
 ![permissões](/images/permissions.png)
 
 > U - Usuário
 > G - Grupo
 > O - Outros
 
-- chmod - Modifica as permissões de um arquivo ou diretório
-- chown - Modifica o proprietário de um arquivo ou diretório
+![chmod 750](/images/chmod.png)
+
+> d = diretório
+> rwx = 7
+> r-x = 5
+> --- = 0
+
+Para saber o número, basta somar conforme a tabela:
+
+![chmod tabela](/images/chmod2.png)
+
+
+
 - chgrp - Modifica o grupo de um arquivo ou diretório
 
 Gerenciamento de pacotes:
