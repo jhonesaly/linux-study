@@ -97,6 +97,13 @@ Segurança/Penetração de testes:
 - man cmd: indica o manual do comando (man ls)
 - cmd --help: mostra resumo do comando e parâmetros cabíveis (ls --help)
 - export: altera variáveis de ambiente
+- para criar scripts que serão executados no shell, arquivo precisar ter extensão .sh e o script deve começar com #!/bin/bash
+
+![creating script](/images/bash1.png)
+
+- Para executar o script na pasta usa-se o comando:
+
+   #> ./nome_do_script.sh
 
 
 Gerenciamento de arquivos e diretórios:
