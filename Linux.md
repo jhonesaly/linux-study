@@ -105,6 +105,20 @@ Segurança/Penetração de testes:
 
    #> ./nome_do_script.sh
 
+Para ver a lista de todos os usuários, use o comando
+
+    cat /etc/passwd
+
+Se quiser ver somente os nomes dos usuários:
+
+    cut -d: -f1 /etc/passwd
+
+Para ver somente os usuários criados pelo administrador ou outros usuários, use o comando:
+
+    getent passwd | awk -F: '$3 >= 1000 {print $1}'
+
+> Este comando usa o comando awk para filtrar as entradas em que o terceiro campo (o ID de usuário, ou UID) é maior ou igual a 1000. Em muitos sistemas Linux, os usuários criados pelo administrador/usuários da máquina têm UIDs maiores ou iguais a 1000.
+
 
 Gerenciamento de arquivos e diretórios:
 
@@ -176,7 +190,7 @@ Gerenciamento de usuários e grupos:
     - -e: defina data de encerramento
     - -s /bin/bash: atribui shell ao usuário
     - -p : cria senha encriptada para usuário
-    - -p $(openssl passwd -crypt 123): cria senha não criptografada (123) para o usuário 
+    - -p $(openssl passwd -6 123): cria senha não criptografada (123) para o usuário 
 - userdel -r -f user - remove o usuário "user" e seu diretório
 - chsh: muda o tipo de shell do usuário **atual** (usermod muda de outro)
     - chsh -s: novo login shell para a conta do usuário
