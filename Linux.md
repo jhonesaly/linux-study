@@ -96,10 +96,6 @@ Segurança/Penetração de testes:
 - date: informa a data e hora
 - man cmd: indica o manual do comando (man ls)
 - cmd --help: mostra resumo do comando e parâmetros cabíveis (ls --help)
-- passwd: muda a senha de um usuário
-    - sudo passwd root: define a senha do super usuário. 
-- su : muda para superusuário
-    - su username: muda para usuário
 - export: altera variáveis de ambiente
 
 
@@ -158,6 +154,7 @@ Gerenciamento de sistema:
 - df - Exibe informações sobre o uso de espaço em disco
 - du - Exibe informações sobre o uso de espaço em disco para um diretório específico
 
+
 Gerenciamento de usuários e grupos:
 
 - adduser - Adiciona um novo usuário ao sistema
@@ -166,6 +163,14 @@ Gerenciamento de usuários e grupos:
 - groupmod - Modifica as informações de um grupo existente
 - deluser - Remove um usuário do sistema
 - delgroup - Remove um grupo do sistema
+- useradd name -m -c "User Name" - cria usuário e pasta
+- userdel -r -f user - remove o usuário "user" e seu diretório
+- chsh: muda o tipo de shell do usuário
+    - chsh -s: novo login shell para a conta do usuário
+- passwd: muda a senha de um usuário
+    - sudo passwd root: define a senha do super usuário. 
+- su : muda para superusuário
+    - su username: muda para usuário    
 
 Gerenciamento de permissões:
 
