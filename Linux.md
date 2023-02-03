@@ -164,8 +164,14 @@ Gerenciamento de usuários e grupos:
 - deluser - Remove um usuário do sistema
 - delgroup - Remove um grupo do sistema
 - useradd name -m -c "User Name" - cria usuário e pasta
+    - -c: cria um comentário, no caso o nome
+    - -m: cria pasta home
+    - -e: defina data de encerramento
+    - -s /bin/bash: atribui shell ao usuário
+    - -p : cria senha encriptada para usuário
+    - -p $(openssl passwd -crypt 123): cria senha não criptografada (123) para o usuário 
 - userdel -r -f user - remove o usuário "user" e seu diretório
-- chsh: muda o tipo de shell do usuário
+- chsh: muda o tipo de shell do usuário **atual** (usermod muda de outro)
     - chsh -s: novo login shell para a conta do usuário
 - passwd: muda a senha de um usuário
     - sudo passwd root: define a senha do super usuário. 
