@@ -6,3 +6,4 @@ distros/
 # Tipos de arquivos:
 
 *.pem
+*.ppk
