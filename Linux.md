@@ -180,17 +180,17 @@ Gerenciamento de usuários e grupos:
 
 - adduser - Adiciona um novo usuário ao sistema
 - addgroup - Adiciona um novo grupo ao sistema
-- usermod - Modifica as informações de um usuário existente
+- usermod -G group1,group2 user1
+    -G - define os grupos (1 e 2) a que o user1 pertence
 - groupmod - Modifica as informações de um grupo existente
 - deluser - Remove um usuário do sistema
 - delgroup - Remove um grupo do sistema
-- useradd name -m -c "User Name" - cria usuário e pasta
+- useradd convidado1 -c "Convidado 1" -m -s /bin/bash -p $(openssl passwd -6 123)
     - -c: cria um comentário, no caso o nome
     - -m: cria pasta home
-    - -e: defina data de encerramento
     - -s /bin/bash: atribui shell ao usuário
-    - -p : cria senha encriptada para usuário
     - -p $(openssl passwd -6 123): cria senha não criptografada (123) para o usuário 
+    - -e: defina data de encerramento
 - userdel -r -f user - remove o usuário "user" e seu diretório
 - chsh: muda o tipo de shell do usuário **atual** (usermod muda de outro)
     - chsh -s: novo login shell para a conta do usuário
