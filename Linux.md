@@ -281,3 +281,13 @@ Gerenciamento de sessão:
     - history -c suprime histórico (mas não apaga)
     - set +o history - faz os comandos serem ocultos, mas não tem como ocultar ação de ocultação.
     - set -o history - volta ao normal
+
+# Comandos RedHat diferentes do Ubuntu Server
+
+- yum: O gerenciador de pacotes YUM (Yellowdog Updater, Modified) é específico do Red Hat e é usado para instalar, atualizar e remover pacotes no sistema.
+- systemctl: É um comando para gerenciar serviços e unidades do sistema no Red Hat. Por exemplo, systemctl start <service> inicia um serviço e systemctl status <service> exibe o status atual do serviço.
+- firewall-cmd: É um comando para configurar e gerenciar o firewall no Red Hat. Por exemplo, firewall-cmd --list-all exibe as regras atuais do firewall e firewall-cmd --add-service=<service> --permanent adiciona uma regra permanente para o serviço especificado.
+- rpm: O gerenciador de pacotes RPM (Red Hat Package Manager) é usado para gerenciar pacotes no Red Hat. Por exemplo, rpm -qa lista todos os pacotes instalados no sistema e rpm -Uvh <package.rpm> instala ou atualiza o pacote especificado.
+- subscription-manager: É um comandos para gerenciar a assinatura de software do Red Hat. Por exemplo, subscription-manager register registra o sistema com o provedor de assinatura e subscription-manager list exibe as assinaturas atuais.
+- scl: É um comando para gerenciar coleções de software no Red Hat. Por exemplo, scl enable <collection> <command> habilita uma coleção de software para um comando específico.
+- dnf: O gerenciador de pacotes DNF (Dandified Yum) é uma nova versão do YUM e é usado para instalar, atualizar e remover pacotes no Red Hat. Ele oferece recursos adicionais em comparação com o YUM, como suporte a multithreading e melhor gestão de dependências.
