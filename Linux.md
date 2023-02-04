@@ -98,6 +98,9 @@ Segurança/Penetração de testes:
 - cmd --help: mostra resumo do comando e parâmetros cabíveis (ls --help)
 - export: altera variáveis de ambiente
 - para criar scripts que serão executados no shell, arquivo precisar ter extensão .sh e o script deve começar com #!/bin/bash
+- unzip <archive.zip> - descompacta arquivo .zip
+- unrar <archive.rar> - descompacta arquivo .rar
+
 
 ![creating script](/images/bash1.png)
 
@@ -233,10 +236,27 @@ Para saber o número, basta somar conforme a tabela:
 
 Gerenciamento de pacotes:
 
-- apt-cache - Exibe informações sobre pacotes disponíveis no sistema
+> Antes de atualizar qualquer pacote no Linux, faça um snapshot da máquina para, caso algo dê problema, possa ser revertido.
+> No ambiente de produção, o ideal é duplicar o sistema para teste, fazer as atualizações verificando se há algum problema, e então atualizar na versão com clientes.
+
+- apt list - lista de pacotes disponíveis no sistema
+    - --installed - Lista todos os pacotes instalados no sistema.
+    - --upgradable - lista de pacotes atualizáveis
+- apt show <package>: Exibe informações detalhadas sobre o pacote especificado, incluindo versão, tamanho, dependências, etc.
+- apt search <package> - Pesquisa por pacotes disponíveis correspondentes ao termo.
 - apt-get update - Atualiza a lista de pacotes disponíveis no sistema
-- apt-get install - Instala um pacote específico no sistema
-- apt-get remove - Remove um pacote específico do sistema
+- apt update: Atualiza a lista de pacotes disponíveis (não instala ainda).
+- apt upgrade: instala atualização dos pacotes já instalados para as versões mais recentes baixadas pelo update.
+- apt install <package>: Instala o pacote especificado.
+- apt -f install: Tenta corrigir quaisquer dependências quebradas dos pacotes instalados.
+- wget <url>: Baixa o arquivo especificado na URL.
+- wget -c <url>: Continua o download de um arquivo interrompido.
+- wget -r -l1 --no-parent <url>: Baixa recursivamente os arquivos de uma página web, sem seguir links para páginas pais.
+- wget -O <file> <url>: Especifica um nome de arquivo diferente para o arquivo baixado.
+- wget --limit-rate=200k <url>: Limita a taxa de download para 200 KB/s.
+- apt remove <package>: Remove o pacote especificado.
+- apt autoremove: Remove pacotes obsoletos e que não são mais necessários.
+- apt clean: Remove arquivos desnecessários do cache do sistema de gerenciamento de pacotes.
 
 Gerenciamento de rede:
 
