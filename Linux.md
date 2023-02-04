@@ -178,7 +178,6 @@ Gerenciamento de sistema:
 - df - Exibe informações sobre o uso de espaço em disco
 - du - Exibe informações sobre o uso de espaço em disco para um diretório específico
 
-
 Gerenciamento de usuários e grupos:
 
 - useradd convidado1 -c "Convidado 1" -m -s /bin/bash -p $(openssl passwd -6 123) -G group1
@@ -229,8 +228,6 @@ Gerenciamento de permissões:
 Para saber o número, basta somar conforme a tabela:
 
 ![chmod tabela](/images/chmod2.png)
-
-
 
 - chgrp - Modifica o grupo de um arquivo ou diretório
 
