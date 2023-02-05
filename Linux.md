@@ -97,16 +97,15 @@ Segurança/Penetração de testes:
 - man cmd: indica o manual do comando (man ls)
 - cmd --help: mostra resumo do comando e parâmetros cabíveis (ls --help)
 - export: altera variáveis de ambiente
+- lsblk - lista todos os discos
+- fdisk -l - mostra os discos
 - para criar scripts que serão executados no shell, arquivo precisar ter extensão .sh e o script deve começar com #!/bin/bash
-- unzip <archive.zip> - descompacta arquivo .zip
-- unrar <archive.rar> - descompacta arquivo .rar
-
 
 ![creating script](/images/bash1.png)
 
 - Para executar o script na pasta usa-se o comando:
 
-   #> ./nome_do_script.sh
+   ./nome_do_script.sh
 
 Para ver a lista de todos os usuários, use o comando
 
@@ -291,3 +290,21 @@ Gerenciamento de sessão:
 - subscription-manager: É um comandos para gerenciar a assinatura de software do Red Hat. Por exemplo, subscription-manager register registra o sistema com o provedor de assinatura e subscription-manager list exibe as assinaturas atuais.
 - scl: É um comando para gerenciar coleções de software no Red Hat. Por exemplo, scl enable <collection> <command> habilita uma coleção de software para um comando específico.
 - dnf: O gerenciador de pacotes DNF (Dandified Yum) é uma nova versão do YUM e é usado para instalar, atualizar e remover pacotes no Red Hat. Ele oferece recursos adicionais em comparação com o YUM, como suporte a multithreading e melhor gestão de dependências.
+
+----
+# Sistema de arquivos
+
+No Linux cada disco é nomeado como sd e uma letra (sda, sdb, etc).
+
+E cada partição dentro do disco é numerada (sda1, sda2, etc).
+
+Os sistemas de arquivos mais comuns em Linux são:
+
+- ext2 - É o segundo sistema de arquivos extendido padrão do Linux. Ele é conhecido por sua estabilidade, eficiência e compatibilidade com vários sistemas operacionais, incluindo o Windows.
+- ext3 - É uma versão melhorada do ext2, adicionando recursos de journaling para garantir a integridade dos dados em caso de falhas de energia.
+- ext4 - É a última versão do sistema de arquivos extendido e inclui recursos aprimorados, como suporte a arquivos de até 16 TB e velocidade aumentada.
+- XFS - É um sistema de arquivos de alto desempenho projetado para gerenciar grandes quantidades de dados em grandes clusters de servidores.
+- Btrfs - É um sistema de arquivos com recursos avançados, como snapshots, compressão de dados e gerenciamento de espaço dinâmico.
+- NTFS - É o sistema de arquivos padrão utilizado no Windows. Ele é compatível com o Linux, mas não possui todas as funcionalidades avançadas de outros sistemas de arquivos do Linux.
+
+Cada sistema de arquivos tem suas próprias vantagens e desvantagens e o usuário pode escolher o que melhor se adequa às suas necessidades.
