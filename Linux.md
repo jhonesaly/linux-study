@@ -293,15 +293,61 @@ Gerenciamento de sessão:
 
 Gerenciamento de discos e partições:
 
-- fdisk: É um utilitário de linha de comando para criar, excluir, modificar e listar partições em discos.
-- parted: é outro utilitário de linha de comando para gerenciar partições, oferecendo uma interface mais amigável do que o fdisk.
-- mount: Comando utilizado para montar partições em um ponto de montagem específico.
-- umount: Comando utilizado para desmontar partições previamente montadas.
-- df: Mostra informações sobre o uso de espaço em disco no sistema.
-- du: Mostra informações sobre o uso de espaço em disco por diretórios e arquivos.
-- lsblk: Lista informações sobre discos e partições no sistema.
-- mkfs: Utilizado para formatar uma partição com um determinado sistema de arquivos.
-- resize2fs: Utilizado para redimensionar partições do sistema de arquivos ext2, ext3 ou ext4.
+- fdisk [opções] <disco>: É um utilitário de linha de comando para criar, excluir, modificar e listar partições em discos. (ex: fdisk -c /dev/sdb)
+    - [-l]: lista as partições do disco
+    - [-u]: unidade de medida em setores
+    - [-c]: habilita/desabilita a compatibilidade dos nomes dos dispositivos com o DOS
+    - [-h]: exibe ajuda
+
+- parted [opções] <disco>: é outro utilitário de linha de comando para gerenciar partições, oferecendo uma interface mais amigável do que o fdisk. (ex: parted -s /dev/sdc)
+    - [-l]: lista as partições do disco
+    - [-s]: silencioso, não mostra mensagens de saída
+    - [-a]: alinhamento de partição
+    - [-h]: exibe ajuda
+
+- mount [opções] <partição> <ponto_de_montagem>: Comando utilizado para montar partições em um ponto de montagem específico. (ex: mount -t ext4 /dev/sda1 /mnt)
+    - [-t]: tipo de sistema de arquivos
+    - [-o]: opções de montagem adicionais
+    - [-v]: modo verboso
+- umount [opções] <ponto_de_montagem>: Comando utilizado para desmontar partições previamente montadas. (ex: umount /mnt)
+    - [-f]: força a desmontagem do dispositivo
+    - [-l]: força a desconexão apenas da partição especificada
+    - [-v]: modo verboso
+
+- df [opções] [sistema_de_arquivos]:Mostra informações sobre o uso de espaço em disco no sistema. (ex: df -h)
+    - [-h]: exibe o tamanho em formato humano legível
+    - [-a]: exibe todos os sistemas de arquivos, incluindo aqueles não montados
+    - [-i]: exibe informações sobre inodes, em vez de espaço livre/ocupado
+- du [opções] <diretório>: Mostra informações sobre o uso de espaço em disco por diretórios e arquivos. (ex: du -sh /home)
+    - [-s]: exibe apenas a soma total do espaço utilizado pelo diretório
+    - [-h]: exibe o tamanho em formato humano legível
+    - [-a]: exibe informações sobre todos os arquivos, incluindo subdiretórios
+- lsblk [opções]: Lista informações sobre discos e partições no sistema. (ex: lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT)
+    - [-o]: especifica as colunas a serem exibidas
+    - [-l]: exibe informações detalhadas sobre os dispositivos
+    - [-S]: exibe informações sobre os dispositivos de swap
+
+- mkfs [opções] <tipo_de_sistema_de_arquivos> <dispositivo>: Utilizado para formatar uma partição com um determinado sistema de arquivos. (ex: mkfs -t ext4 /dev/sda1)
+    - [-t]: tipo de sistema de arquivos
+    - [-c]: verifica a integridade do dispositivo antes de formatá-lo
+    - [-v]: modo verboso
+
+- resize2fs <dispositivo> [opções]: Utilizado para redimensionar partições do sistema de arquivos ext2, ext3 ou ext4. (ex: resize2fs /dev/sda1)
+    - [-f]: força o redimensionamento, mesmo se não houver espaço suficiente
+    - [-M]: mantém o sistema de arquivos como um sistema de arquivos não montável após o redimensionamento
+    - [-p]: exibe o progresso da operação de redimensionamento
+
+- blkid [opções] <dispositivo> (ex: blkid /dev/sda1)
+    - [-o]: especifica o formato de saída
+    - [-c]: arquivo de cache a ser usado
+    - [-s]: especifica a chave a ser exibida
+    - [-u]: especifica o UUID a ser exibido
+
+- tune2fs [opções] <dispositivo> (ex: tune2fs -l /dev/sda1)
+    - [-l]: exibe informações detalhadas sobre o sistema de arquivos
+    - [-c]: número de checagens do sistema de arquivos
+    - [-i]: intervalo de tempo entre checagens
+    - [-m]: porcentagem de espaço livre mínimo a ser mantido no sistema de arquivos
 
 
 ----
