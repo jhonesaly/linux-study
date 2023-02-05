@@ -291,6 +291,19 @@ Gerenciamento de sessão:
 - scl: É um comando para gerenciar coleções de software no Red Hat. Por exemplo, scl enable <collection> <command> habilita uma coleção de software para um comando específico.
 - dnf: O gerenciador de pacotes DNF (Dandified Yum) é uma nova versão do YUM e é usado para instalar, atualizar e remover pacotes no Red Hat. Ele oferece recursos adicionais em comparação com o YUM, como suporte a multithreading e melhor gestão de dependências.
 
+Gerenciamento de discos e partições:
+
+- fdisk: É um utilitário de linha de comando para criar, excluir, modificar e listar partições em discos.
+- parted: é outro utilitário de linha de comando para gerenciar partições, oferecendo uma interface mais amigável do que o fdisk.
+- mount: Comando utilizado para montar partições em um ponto de montagem específico.
+- umount: Comando utilizado para desmontar partições previamente montadas.
+- df: Mostra informações sobre o uso de espaço em disco no sistema.
+- du: Mostra informações sobre o uso de espaço em disco por diretórios e arquivos.
+- lsblk: Lista informações sobre discos e partições no sistema.
+- mkfs: Utilizado para formatar uma partição com um determinado sistema de arquivos.
+- resize2fs: Utilizado para redimensionar partições do sistema de arquivos ext2, ext3 ou ext4.
+
+
 ----
 # Sistema de arquivos
 
