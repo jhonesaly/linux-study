@@ -32,7 +32,7 @@ done
 
 echo "Lendo o arquivo config.txt"
 
-filename= "config.txt"
+"filename= "config.txt""
 
 declare -A directories
 declare -A groups
