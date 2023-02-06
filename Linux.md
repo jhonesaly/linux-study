@@ -185,7 +185,6 @@ Manipulação de arquivos:
 
 Gerenciamento de processos:
 
-- top: exibe em tempo real a lista dos processos em execução, incluindo informações como CPU, memória, usuário e tempo de execução.
 - ps [opções]: exibe informações detalhadas sobre processos ativos. (ex: ps aux)
     - [-a]: exibe todos os processos de todos os usuários
     - [-x]: exibe todos os processos, incluindo aqueles sem tela
@@ -194,6 +193,7 @@ Gerenciamento de processos:
 - kill [opções] PID: envia um sinal para encerrar um processo específico. (ex: kill -9 12345)
     - [-9]: envia o sinal de terminação forçada (SIGKILL)
     - [-15]: envia o sinal de terminação normal (SIGTERM)
+- top: exibe em tempo real a lista dos processos em execução, incluindo informações como CPU, memória, usuário e tempo de execução.
 - killall [opções] process-name: envia um sinal para encerrar todos os processos com o nome fornecido. (ex: killall -l chrome)
     - [-l]: lista os sinais disponíveis
     - [-9]: envia o sinal de terminação forçada (SIGKILL)
