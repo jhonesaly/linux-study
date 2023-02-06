@@ -15,8 +15,12 @@ done
 
 ## Excluir todos os grupos
 echo "Excluindo grupos"
+
+reserved_groups=(root daemon bin sys sync games man lp mail news uucp proxy www-data syslog messagebus backup list ssh)
 for group in $(cut -d: -f1 /etc/group); do
-  sudo groupdel $group
+  if ! [[ " ${reserved_groups[@]} " =~ " ${group} " ]]; then
+    sudo groupdel $group
+  fi
 done
 
 ## Excluir todas as pastas dos usuários
