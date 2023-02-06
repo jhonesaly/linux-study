@@ -136,15 +136,16 @@ Gerenciamento de arquivos e diretórios:
     - [-f]: força a remoção sem confirmação
     - [-r]: remove recursivamente, incluindo subdiretórios e arquivos
     - [-i]: pergunta antes de remover cada arquivo
-- cp [opções] <arquivo_origem> <arquivo_destino>: copia um arquivo para outro local. (ex: cp arquivo.txt /backup)
+- cp [opções] <arquivo_origem> <arquivo_destino>: copia um arquivo para outro local. (ex: cp /home/user/arquivo.txt /backup)
     - [-r]: copia recursivamente, incluindo subdiretórios e arquivos
     - [-p]: preserva as permissões, data e hora de modificação do arquivo original
     - [-u]: copia somente se o arquivo de destino for mais antigo que o de origem
     - [-i]: pergunta antes de sobrescrever o arquivo de destino.
     - [-v]: executa o comando "verbosamente", mostrando tudo que foi feito
-- mv [opções] <arquivo_origem> <arquivo_destino>: move ou renomeia um arquivo. (ex: mv antigo.txt novo.txt)
+- mv [opções] <arquivo_origem> <arquivo_destino>: move ou renomeia um arquivo. (ex: mv /home/user/antigo.txt /backup/novo.txt)
     - [-f]: força a operação, sobrescrevendo o arquivo de destino se ele existir
     - [-i]: pergunta antes de sobrescrever o arquivo de destino.
+    - [-v]: executa o comando "verbosamente", mostrando tudo que foi feito
 - touch <arquivo>: cria um novo arquivo ou atualiza a data de modificação de um arquivo existente. (ex: touch novo_arquivo.txt)
 
 - ls - Lista o conteúdo de um diretório
@@ -184,12 +185,28 @@ Manipulação de arquivos:
 
 Gerenciamento de processos:
 
-- ps - Lista os processos em execução
-- kill - Encerra um processo pelo ID do processo
-- top - Exibe informações sobre processos em execução e uso de recursos
-- killall - Encerra vários processos pelo nome
-- nice - Altera a prioridade de um processo
-- renice - Altera a prioridade de um processo existente
+- top: exibe em tempo real a lista dos processos em execução, incluindo informações como CPU, memória, usuário e tempo de execução.
+- ps [opções]: exibe informações detalhadas sobre processos ativos. (ex: ps aux)
+    - [-a]: exibe todos os processos de todos os usuários
+    - [-x]: exibe todos os processos, incluindo aqueles sem tela
+    - [-u]: inclui informações sobre uso de CPU e memória
+    - [-e]: mostra informações adicionais sobre os processos
+- kill [opções] PID: envia um sinal para encerrar um processo específico. (ex: kill -9 12345)
+    - [-9]: envia o sinal de terminação forçada (SIGKILL)
+    - [-15]: envia o sinal de terminação normal (SIGTERM)
+- killall [opções] process-name: envia um sinal para encerrar todos os processos com o nome fornecido. (ex: killall -l chrome)
+    - [-l]: lista os sinais disponíveis
+    - [-9]: envia o sinal de terminação forçada (SIGKILL)
+    - [-15]: envia o sinal de terminação normal (SIGTERM)
+- pkill [opções]: envia um sinal para encerrar processos com o nome ou ID específico. (ex: pkill -9 apache2)
+    - [-9]: envia o sinal de terminação forçada (SIGKILL)
+    - [-15]: envia o sinal de terminação normal (SIGTERM)
+- pgrep [opções]: procura por processos com o nome específico e exibe seus IDs. (ex: pgrep apache2)
+- nice [opções] <programa>: Executa um programa com um nível de prioridade especificado, influenciando na quantidade de recursos do sistema que ele pode usar. (ex: nice -n 10 firefox)
+    - [-n <level>]: especifica o nível de prioridade para o programa
+- renice [opções] <prioridade> <process-id>: Altera a prioridade de um processo em execução. (ex: renice -n 10 12345)
+    - [-n <prioridade>]: especifica o novo nível de prioridade para o processo
+    - [<process-id>]: identificador do processo a ser alterado.
 
 Gerenciamento de sistema:
 
