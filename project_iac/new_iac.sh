@@ -1,9 +1,12 @@
 #!/bin/bash
 
+echo "Starting..."
+
 # ---
 # Excluir diretórios, arquivos, grupos e usuários criados anteriormente
 
 ## Excluir todos os usuários, exceto o usuário root
+echo "Excluindo usuários"
 for user in $(ls /home); do
   if [ $user != "root" ]; then
     sudo userdel -r $user
@@ -11,11 +14,13 @@ for user in $(ls /home); do
 done
 
 ## Excluir todos os grupos
+echo "Excluindo grupos"
 for group in $(cut -d: -f1 /etc/group); do
   sudo groupdel $group
 done
 
 ## Excluir todas as pastas dos usuários
+echo "Excluindo pastas"
 for user in $(ls /home); do
   sudo rm -rf /home/$user
 done
@@ -23,30 +28,41 @@ done
 # ---
 # Criar diretórios, grupos e usuários
 
-## Criar diretórios
-sudo mkdir /publico
-sudo mkdir /adm
-sudo mkdir /ven
-sudo mkdir /sec
+## Diretórios
 
-## Criar grupos
-sudo groupadd GRP_ADM
-sudo groupadd GRP_VEN
-sudo groupadd GRP_SEC
+dirs=(/publico /adm /ven /sec)
 
-## Criar usuários e adicionar nos grupos
-sudo useradd -m -d /home/carlos -g GRP_ADM carlos
-sudo useradd -m -d /home/maria -g GRP_ADM maria
-sudo useradd -m -d /home/joao -g GRP_ADM joao
-sudo useradd -m -d /home/debora -g GRP_VEN debora
-sudo useradd -m -d /home/sebastiana -g GRP_VEN sebastiana
-sudo useradd -m -d /home/roberto -g GRP_VEN roberto
-sudo useradd -m -d /home/josefina -g GRP_SEC josefina
-sudo useradd -m -d /home/amanda -g GRP_SEC amanda
-sudo useradd -m -d /home/rogerio -g GRP_SEC rogerio
+## Grupos
+declare -A groups
+groups=( [GRP_ADM]=1 [GRP_VEN]=2 [GRP_SEC]=3 )
+
+## Usuários
+declare -A users
+users=( [carlos]=1 [maria]=1 [joao]=1 [debora]=2 [sebastiana]=2 [roberto]=2 [josefina]=3 [amanda]=3 [rogerio]=3 )
+
+## Criar Diretórios
+echo "Criando pastas"
+for dir in "${dirs[@]}"; do
+  sudo mkdir $dir
+  sudo chmod 775 $dir
+done
+
+## Criar Grupos
+echo "Criando grupos"
+for group in "${!groups[@]}"; do
+  sudo groupadd $group
+done
+
+## Criar Usuários
+echo "Criando usuários"
+for user in "${!users[@]}"; do
+  sudo useradd -m -d /home/$user -g ${group}_$(printf %03d ${groups[${users[$user]}]}) $user
+  echo "$user:$user" | sudo chpasswd
+  sudo chage -d 0 $user
+done
 
 # ---
-# Dinir dono das pastas
+# Definir dono das pastas
 
 ## Mudar dono de todos os diretórios criados para root
 sudo chown -R root:root /publico
@@ -58,11 +74,15 @@ sudo chown -R root:root /sec
 sudo chmod -R 777 /publico
 
 ## Conceder permissões aos usuários dentro de seus respectivos diretórios
-sudo chmod -R 700 /adm/GRP_ADM
-sudo chmod -R 700 /ven/GRP_VEN
-sudo chmod -R 700 /sec/GRP_SEC
+sudo chmod -R 770 /adm
+sudo chmod -R 770 /ven
+sudo chmod -R 770 /sec
 
 ## Remover permissões de leitura, escrita e execução em diretórios de departamentos que não pertencem
 sudo chmod -R 500 /adm
 sudo chmod -R 500 /ven
 sudo chmod -R 500 /sec
+
+# ---
+
+echo "End"
