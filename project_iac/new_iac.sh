@@ -32,50 +32,63 @@ done
 
 echo "Lendo o arquivo config.txt"
 
+config = "config.txt"
+
+declare -A directories
+declare -A groups
+declare -A users
+
 while read line; do
-  ## Verificando se é uma linha de diretórios
-  if [[ "$line" == "# Escreva aqui o nome das pastas que deseja criar"* ]]; then
-    type="directories"
-  ## Verificando se é uma linha de grupos
-  elif [[ "$line" == "# Escreva aqui o nome dos grupos que deseja criar"* ]]; then
-    type="groups"
-  ## Verificando se é uma linha de usuários
-  elif [[ "$line" == "# Escreva aqui o nome dos usuários que deseja criar"* ]]; then
-    type="users"
-  ## Adicionando na lista de acordo com o tipo
-  else
-    declare -A "$type"
-    eval "$type[\$line]=\$line"
-  fi
-done < config.txt
+  
+    if [[ $line =~ ^# ]]; then
+        ## Verificando se é uma linha de diretórios
+        if [[ "$line" =~ "^#.*pastas.*" ]]; then
+            section="directories"
+        
+        ## Verificando se é uma linha de grupos
+        elif [[ "$line" =~ "^#.*grupos.*" ]]; then
+            section="groups"
+        
+        ## Verificando se é uma linha de usuários
+        elif [[ "$line" =~ "^#.*usuários.*" ]]; then
+            section="users"
+        fi
+    else
+        if [[ $section == "directories" ]]; then
+        directories[$line]=1
+        
+        elif [[ $section == "groups" ]]; then
+        groups[$line]=$(( ${#groups[@]} + 1 ))
+        
+        elif [[ $section == "users" ]]; then
+        user=($line)
+        username=${user[0]}
+        group=${user[1]}
+        users[$username]=$group
+        fi
+ 
+    fi
+done < $config
 
 ## Criando diretórios
 echo "Criando diretórios"
 for dir in "${directories[@]}"; do
-  sudo mkdir -p "/$dir"
+    sudo mkdir -p "/$dir"
 done
 
 ## Criando grupos
 echo "Criando grupos"
-declare -A group_ids
-group_id=1
 for group in "${groups[@]}"; do
-  sudo groupadd "$group"
-  group_ids["$group"]="$group_id"
-  ((group_id++))
+    sudo groupadd "$group"
 done
 
-## Criando usuários
+## Criando usuários e adicionando a grupo
 echo "Criando usuários"
-for user in "${users[@]}"; do
-  for group in "${groups[@]}"; do
-    if [[ "$user" == *" (${group_ids["$group"]})" ]]; then
-      sudo useradd -m -d "/home/${user%% *}" -g "$group" "${user%% *}"
-    fi
-  done
+for user in "${!users[@]}"; do
+    useradd $user
+    group=$(getent group ${groups[${users[$user]}]} | awk -F: '{print $1}')
+    usermod -aG $group $user
 done
-
-
 
 # ---
 # Definir dono das pastas

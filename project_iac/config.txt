@@ -1,14 +1,14 @@
-# Escreva aqui o nome das pastas que deseja criar (coloque um em cada linha):
+# Escreva o nome das pastas que deseja criar (coloque um em cada linha):
 adm
 ven
 sec
 
-# Escreva aqui o nome dos grupos que deseja criar (coloque um em cada linha):
+# Escreva o nome dos grupos que deseja criar: (coloque um em cada linha)
 GRP_ADM
 GRP_VEN
 GRP_SEC
 
-# Escreva aqui o nome dos usuários que deseja criar (coloque um em cada linha):
+# Escreva o nome dos usuários que deseja criar e o grupo ao qual atribuir (coloque um em cada linha):
 carlos 1
 maria 1
 joao 1
