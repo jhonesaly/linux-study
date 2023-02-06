@@ -56,3 +56,27 @@ Em seguida, o script cria os grupos especificados no arquivo de configuração u
 Por fim, o script cria os usuários especificados no arquivo de configuração usando o comando "useradd". Antes de criar o usuário, ele usa o comando "id" para verificar se o grupo ao qual o usuário pertence já foi criado. Se o grupo não tiver sido criado, ele é criado primeiro. Em seguida, o usuário é criado e atribuído ao grupo especificado por seu número.
 
 Este script é uma ferramenta útil para administradores de sistemas que precisam criar repetidamente diretórios, grupos e usuários em seus sistemas operacionais. Ao invés de executar manualmente cada um desses comandos, o script faz isso de forma automatizada e com base nas informações especificadas no arquivo de configuração.
+
+# Rodando na sua máquina
+
+Como root, vá para a raiz e crie uma pasta para receber os arquivos necessários
+
+    > cd /
+    > mkdir downloads
+    > cd downloads
+
+Faça o download dos arquivos necessários no GitHub:
+
+    > wget https://raw.githubusercontent.com/jhonesaly/linux-study/master/project_iac/config.txt
+    > wget https://raw.githubusercontent.com/jhonesaly/linux-study/master/project_iac/new_iac.sh
+
+Atribua a possibilidade de ler, editar e executar os arquivos:
+
+    > chmod 700 config.txt
+    > chmod 700 new_iac.sh
+
+Abra o arquivo config.txt para definir o que será criado por meio do comando no prompt:
+
+    > ...
+
+Execute 

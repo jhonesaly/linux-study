@@ -32,7 +32,7 @@ done
 
 echo "Lendo o arquivo config.txt"
 
-config = "config.txt"
+filename = "config.txt"
 
 declare -A directories
 declare -A groups
@@ -68,7 +68,7 @@ while read line; do
         fi
  
     fi
-done < $config
+done < $filename
 
 ## Criando diretórios
 echo "Criando diretórios"
