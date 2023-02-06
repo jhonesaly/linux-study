@@ -124,6 +124,29 @@ Para ver somente os usuários criados pelo administrador ou outros usuários, us
 
 Gerenciamento de arquivos e diretórios:
 
+- ls [opções] <diretório>: exibe o conteúdo de um diretório. (ex: ls -l /etc)
+    - [-l]: modo detalhado
+    - [-a]: mostra arquivos ocultos
+    - [-h]: exibe o tamanho em formato humano legível
+    - [-t]: ordena por data de modificação
+- cd <diretório>: altera o diretório atual para o especificado. (ex: cd /etc)
+- mkdir <diretório>: cria um novo diretório. (ex: mkdir novo_diretorio)
+- rmdir <diretório>: remove um diretório vazio. (ex: rmdir antigo_diretorio)
+- rm [opções] <arquivo>: remove um ou mais arquivos. (ex: rm arquivo.txt)
+    - [-f]: força a remoção sem confirmação
+    - [-r]: remove recursivamente, incluindo subdiretórios e arquivos
+    - [-i]: pergunta antes de remover cada arquivo
+- cp [opções] <arquivo_origem> <arquivo_destino>: copia um arquivo para outro local. (ex: cp arquivo.txt /backup)
+    - [-r]: copia recursivamente, incluindo subdiretórios e arquivos
+    - [-p]: preserva as permissões, data e hora de modificação do arquivo original
+    - [-u]: copia somente se o arquivo de destino for mais antigo que o de origem
+    - [-i]: pergunta antes de sobrescrever o arquivo de destino.
+    - [-v]: executa o comando "verbosamente", mostrando tudo que foi feito
+- mv [opções] <arquivo_origem> <arquivo_destino>: move ou renomeia um arquivo. (ex: mv antigo.txt novo.txt)
+    - [-f]: força a operação, sobrescrevendo o arquivo de destino se ele existir
+    - [-i]: pergunta antes de sobrescrever o arquivo de destino.
+- touch <arquivo>: cria um novo arquivo ou atualiza a data de modificação de um arquivo existente. (ex: touch novo_arquivo.txt)
+
 - ls - Lista o conteúdo de um diretório
     - após o comando cd, pode clicar duas vezes a tecla tab para mostrar todos os diretórios e facilitar a navegação
     - ls | more - lista os conteúdos que cabem no visor do terminal e para mostrar mais é necessário clicar enter. (para sair use ctrl + C)
@@ -281,16 +304,6 @@ Gerenciamento de sessão:
     - set +o history - faz os comandos serem ocultos, mas não tem como ocultar ação de ocultação.
     - set -o history - volta ao normal
 
-# Comandos RedHat diferentes do Ubuntu Server
-
-- yum: O gerenciador de pacotes YUM (Yellowdog Updater, Modified) é específico do Red Hat e é usado para instalar, atualizar e remover pacotes no sistema.
-- systemctl: É um comando para gerenciar serviços e unidades do sistema no Red Hat. Por exemplo, systemctl start <service> inicia um serviço e systemctl status <service> exibe o status atual do serviço.
-- firewall-cmd: É um comando para configurar e gerenciar o firewall no Red Hat. Por exemplo, firewall-cmd --list-all exibe as regras atuais do firewall e firewall-cmd --add-service=<service> --permanent adiciona uma regra permanente para o serviço especificado.
-- rpm: O gerenciador de pacotes RPM (Red Hat Package Manager) é usado para gerenciar pacotes no Red Hat. Por exemplo, rpm -qa lista todos os pacotes instalados no sistema e rpm -Uvh <package.rpm> instala ou atualiza o pacote especificado.
-- subscription-manager: É um comandos para gerenciar a assinatura de software do Red Hat. Por exemplo, subscription-manager register registra o sistema com o provedor de assinatura e subscription-manager list exibe as assinaturas atuais.
-- scl: É um comando para gerenciar coleções de software no Red Hat. Por exemplo, scl enable <collection> <command> habilita uma coleção de software para um comando específico.
-- dnf: O gerenciador de pacotes DNF (Dandified Yum) é uma nova versão do YUM e é usado para instalar, atualizar e remover pacotes no Red Hat. Ele oferece recursos adicionais em comparação com o YUM, como suporte a multithreading e melhor gestão de dependências.
-
 Gerenciamento de discos e partições:
 
 - fdisk [opções] <disco>: É um utilitário de linha de comando para criar, excluir, modificar e listar partições em discos. (ex: fdisk -c /dev/sdb)
@@ -341,6 +354,17 @@ Gerenciamento de discos e partições:
     - [-c]: número de checagens do sistema de arquivos
     - [-i]: intervalo de tempo entre checagens
     - [-m]: porcentagem de espaço livre mínimo a ser mantido no sistema de arquivos
+
+# Comandos RedHat diferentes do Ubuntu Server
+
+- yum: O gerenciador de pacotes YUM (Yellowdog Updater, Modified) é específico do Red Hat e é usado para instalar, atualizar e remover pacotes no sistema.
+- systemctl: É um comando para gerenciar serviços e unidades do sistema no Red Hat. Por exemplo, systemctl start <service> inicia um serviço e systemctl status <service> exibe o status atual do serviço.
+- firewall-cmd: É um comando para configurar e gerenciar o firewall no Red Hat. Por exemplo, firewall-cmd --list-all exibe as regras atuais do firewall e firewall-cmd --add-service=<service> --permanent adiciona uma regra permanente para o serviço especificado.
+- rpm: O gerenciador de pacotes RPM (Red Hat Package Manager) é usado para gerenciar pacotes no Red Hat. Por exemplo, rpm -qa lista todos os pacotes instalados no sistema e rpm -Uvh <package.rpm> instala ou atualiza o pacote especificado.
+- subscription-manager: É um comandos para gerenciar a assinatura de software do Red Hat. Por exemplo, subscription-manager register registra o sistema com o provedor de assinatura e subscription-manager list exibe as assinaturas atuais.
+- scl: É um comando para gerenciar coleções de software no Red Hat. Por exemplo, scl enable <collection> <command> habilita uma coleção de software para um comando específico.
+- dnf: O gerenciador de pacotes DNF (Dandified Yum) é uma nova versão do YUM e é usado para instalar, atualizar e remover pacotes no Red Hat. Ele oferece recursos adicionais em comparação com o YUM, como suporte a multithreading e melhor gestão de dependências.
+
 
 ----
 # Sistema de arquivos
