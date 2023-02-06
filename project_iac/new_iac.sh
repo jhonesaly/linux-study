@@ -28,38 +28,54 @@ done
 # ---
 # Criar diretórios, grupos e usuários
 
-## Diretórios
+# Lendo o arquivo
 
-dirs=(/publico /adm /ven /sec)
+echo "Lendo o arquivo config.txt"
 
-## Grupos
-declare -A groups
-groups=( [GRP_ADM]=1 [GRP_VEN]=2 [GRP_SEC]=3 )
+while read line; do
+  ## Verificando se é uma linha de diretórios
+  if [[ "$line" == "# Escreva aqui o nome das pastas que deseja criar"* ]]; then
+    type="directories"
+  ## Verificando se é uma linha de grupos
+  elif [[ "$line" == "# Escreva aqui o nome dos grupos que deseja criar"* ]]; then
+    type="groups"
+  ## Verificando se é uma linha de usuários
+  elif [[ "$line" == "# Escreva aqui o nome dos usuários que deseja criar"* ]]; then
+    type="users"
+  ## Adicionando na lista de acordo com o tipo
+  else
+    declare -A "$type"
+    eval "$type[\$line]=\$line"
+  fi
+done < config.txt
 
-## Usuários
-declare -A users
-users=( [carlos]=1 [maria]=1 [joao]=1 [debora]=2 [sebastiana]=2 [roberto]=2 [josefina]=3 [amanda]=3 [rogerio]=3 )
-
-## Criar Diretórios
-echo "Criando pastas"
-for dir in "${dirs[@]}"; do
-  sudo mkdir $dir
-  sudo chmod 775 $dir
+## Criando diretórios
+echo "Criando diretórios"
+for dir in "${directories[@]}"; do
+  sudo mkdir -p "/$dir"
 done
 
-## Criar Grupos
+## Criando grupos
 echo "Criando grupos"
-for group in "${!groups[@]}"; do
-  sudo groupadd $group
+declare -A group_ids
+group_id=1
+for group in "${groups[@]}"; do
+  sudo groupadd "$group"
+  group_ids["$group"]="$group_id"
+  ((group_id++))
 done
 
-## Criar Usuários
+## Criando usuários
 echo "Criando usuários"
-for user in "${!users[@]}"; do
-  sudo useradd -m -d /home/$user -g ${group}_$(printf %03d ${groups[${users[$user]}]}) $user
-  echo "$user:$user" | sudo chpasswd
-  sudo chage -d 0 $user
+for user in "${users[@]}"; do
+  for group in "${groups[@]}"; do
+    if [[ "$user" == *" (${group_ids["$group"]})" ]]; then
+      sudo useradd -m -d "/home/${user%% *}" -g "$group" "${user%% *}"
+    fi
+  done
 done
+
+
 
 # ---
 # Definir dono das pastas
