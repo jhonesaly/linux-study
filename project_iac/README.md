@@ -75,12 +75,10 @@ Atribua a possibilidade de ler, editar e executar os arquivos:
     > chmod 700 config.txt
     > chmod 700 new_iac.sh
 
-Abra o arquivo config.txt para definir o que será criado.
- 
-Por meio do comando no prompt:
+Abra o arquivo config.txt para definir o que será criado por meio do comando no prompt:
 
     > nano config.txt
 
-Execute 
+Com tudo configurado, execute: 
 
     > ./new_iac.sh

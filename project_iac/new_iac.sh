@@ -35,6 +35,11 @@ done
 
 # Lendo o arquivo
 
+if [[ ! -r "config.txt" ]]; then
+  echo "Não foi possível ler o arquivo config.txt"
+  exit 1
+fi
+
 echo "Lendo o arquivo config.txt"
 
 declare -A "directories"
