@@ -13,13 +13,12 @@ for user in $(ls /home); do
   fi
 done
 
-## Excluir todos os grupos
+## Excluir todos os grupos com id superior a 999
 echo "Excluindo grupos"
 
-reserved_groups=(root daemon bin sys sync games man lp lxd mail news uucp proxy www-data syslog messagebus backup list ssh systemd-resolve systemd-timesync gnats usbmux systemd-network uuidd tcpdump tss landscape irc)
-
 for group in $(cut -d: -f1 /etc/group); do
-  if ! [[ " ${reserved_groups[@]} " =~ " ${group} " ]]; then
+  group_id=$(grep "^$group" /etc/group | cut -d: -f3)
+  if [ "$group_id" -gt 999 ]; then
     sudo groupdel $group
   fi
 done
