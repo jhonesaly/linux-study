@@ -42,52 +42,49 @@ fi
 
 echo "Lendo o arquivo config.txt"
 
-declare -A "directories"
-declare -A "groups"
-declare -A "users"
+declare -A directories
+declare -A groups
+declare -A users
+
+echo "diretórios: $directories"
+echo "grupos: $groups"
+echo "usuários: $users"
+
+section=""
+i=0
 
 while read line; do
-  
-    if [[ $line =~ ^# ]]; then
-        ## Verificando se é uma linha de diretórios
-        if [[ "$line" =~ "^#.*pastas.*" ]]; then
-            section="directories"
-        
-        ## Verificando se é uma linha de grupos
-        elif [[ "$line" =~ "^#.*grupos.*" ]]; then
-            section="groups"
-        
-        ## Verificando se é uma linha de usuários
-        elif [[ "$line" =~ "^#.*usuários.*" ]]; then
-            section="users"
-        fi
-    else
-        if [[ $section == "directories" ]]; then
-        directories[$line]=1
-        
-        elif [[ $section == "groups" ]]; then
-        groups[$line]=$(( ${#groups[@]} + 1 ))
-        
-        elif [[ $section == "users" ]]; then
-        user=($line)
-        username=${user[0]}
-        group=${user[1]}
-        users[$username]=$group
-        fi
- 
+  echo "$line"
+  if [[ $line =~ ^# ]]; then
+    echo "primeiro if"
+    ## Verificando se é uma linha de diretórios
+    if [[ "$line" =~ "^#.*pastas.*" ]]; then
+      echo "if do pastas"
+      section="directories"
+      i=0
     fi
+  else
+    if [ "$section" == "directories" ]; then
+      directories[i]=$line
+      i=$((i + 1))
+    fi
+  fi
 done < config.txt
+
+echo "diretórios: ${directories[@]}"
+echo "grupos: $groups"
+echo "usuários: $users"
 
 ## Criando diretórios
 echo "Criando diretórios"
-for dir in "${directories[@]}"; do
+for dir in "${!directories[@]}"; do
     sudo mkdir -p "/$dir"
     echo "Criado $dir"
 done
 
 ## Criando grupos
 echo "Criando grupos"
-for group in "${groups[@]}"; do
+for group in "${!groups[@]}"; do
     sudo groupadd "$group"
     echo "Criado $group"
 done
