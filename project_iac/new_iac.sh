@@ -17,13 +17,14 @@ done
 echo "Excluindo grupos"
 
 for group in $(cut -d: -f1 /etc/group); do
-  id=$(gid -n $group)
+  id=$(getent group $group | cut -d: -f3)
   if [ $id -gt 999 ] && [ $id -lt 1100 ]; then
     if [ $group != "sync" ]; then
       sudo groupdel $group
     fi
   fi
 done
+
 
 ## Excluir todas as pastas dos usuários
 echo "Excluindo pastas"
