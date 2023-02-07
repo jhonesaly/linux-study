@@ -47,9 +47,9 @@ Operações:
 
 O script "new_iac.sh" é um shell script que é utilizado para automatizar a criação de diretórios, grupos e usuários em um sistema operacional baseado em Unix.
 
-O script começa com a definição do arquivo de configuração, que deve estar na mesma pasta do script. O arquivo de configuração, chamado "config.txt", contém as informações sobre os diretórios, grupos e usuários a serem criados.
+Ele começa com a definição do arquivo de configuração, que deve estar na mesma pasta do script. O arquivo de configuração, chamado "config.txt", contém as informações sobre os diretórios, grupos e usuários a serem criados.
 
-O script lê o arquivo de configuração e armazena as informações em três variáveis: "directories", "groups" e "users". Em seguida, ele cria cada um dos diretórios especificados no arquivo de configuração usando o comando "mkdir".
+Depois ele lê o arquivo de configuração e armazena as informações em três variáveis: "directories", "groups" e "users". Em seguida, ele cria cada um dos diretórios especificados no arquivo de configuração usando o comando "mkdir".
 
 Em seguida, o script cria os grupos especificados no arquivo de configuração usando o comando "groupadd". Ele usa um loop "for" para iterar sobre cada um dos grupos e criá-los individualmente.
 
