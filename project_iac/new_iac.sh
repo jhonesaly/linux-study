@@ -37,9 +37,9 @@ done
 
 echo "Lendo o arquivo config.txt"
 
-declare -A directories
-declare -A groups
-declare -A users
+declare -A "directories"
+declare -A "groups"
+declare -A "users"
 
 while read line; do
   
@@ -90,9 +90,9 @@ done
 ## Criando usuários e adicionando a grupo
 echo "Criando usuários..."
 for user in "${!users[@]}"; do
-    useradd $user
+    sudo useradd $user
     group=$(getent group ${groups[${users[$user]}]} | awk -F: '{print $1}')
-    usermod -aG $group $user
+    sudo usermod -aG $group $user
     echo "Criado $user"
 done
 
