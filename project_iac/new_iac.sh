@@ -13,13 +13,15 @@ for user in $(ls /home); do
   fi
 done
 
-## Excluir todos os grupos com id superior a 999
+## Excluir todos os grupos com id superior a 999 e menor que 1100
 echo "Excluindo grupos"
 
 for group in $(cut -d: -f1 /etc/group); do
-  group_id=$(grep "^$group" /etc/group | cut -d: -f3)
-  if [ "$group_id" -gt 999 ]; then
-    sudo groupdel $group
+  id=$(gid -n $group)
+  if [ $id -gt 999 ] && [ $id -lt 1100 ]; then
+    if [ $group != "sync" ]; then
+      sudo groupdel $group
+    fi
   fi
 done
 
