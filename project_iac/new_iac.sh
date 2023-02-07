@@ -16,11 +16,7 @@ done
 ## Excluir todos os grupos
 echo "Excluindo grupos"
 
-reserved_groups=(
-  root daemon bin sys sync games man lp mail news uucp proxy www-data syslog 
-  messagebus backup list ssh irc gnats usbmux lxd sync systemd-network 
-  systemd-resolve systemd-timesync uuidd tcpdump tss landscape
-  )
+reserved_groups=(root daemon bin sys sync games man lp lxd mail news uucp proxy www-data syslog messagebus backup list ssh systemd-resolve systemd-timesync gnats usbmux systemd-network uuidd tcpdump tss landscape irc)
 
 for group in $(cut -d: -f1 /etc/group); do
   if ! [[ " ${reserved_groups[@]} " =~ " ${group} " ]]; then
