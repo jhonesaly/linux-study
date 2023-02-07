@@ -15,7 +15,6 @@ done
 
 ## Excluir todos os grupos com id superior a 999 e menor que 1100
 echo "Excluindo grupos"
-
 for group in $(cut -d: -f1 /etc/group); do
   id=$(getent group $group | cut -d: -f3)
   if [ $id -gt 999 ] && [ $id -lt 1100 ]; then
@@ -24,7 +23,6 @@ for group in $(cut -d: -f1 /etc/group); do
     fi
   fi
 done
-
 
 ## Excluir todas as pastas dos usuários
 echo "Excluindo pastas"
@@ -79,20 +77,23 @@ done < config.txt
 echo "Criando diretórios"
 for dir in "${directories[@]}"; do
     sudo mkdir -p "/$dir"
+    echo "Criado $dir"
 done
 
 ## Criando grupos
 echo "Criando grupos"
 for group in "${groups[@]}"; do
     sudo groupadd "$group"
+    echo "Criado $group"
 done
 
 ## Criando usuários e adicionando a grupo
-echo "Criando usuários"
+echo "Criando usuários..."
 for user in "${!users[@]}"; do
     useradd $user
     group=$(getent group ${groups[${users[$user]}]} | awk -F: '{print $1}')
     usermod -aG $group $user
+    echo "Criado $user"
 done
 
 # ---
