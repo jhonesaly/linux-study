@@ -13,8 +13,3 @@ sudo chmod -R 777 /publico
 sudo chmod -R 770 /adm
 sudo chmod -R 770 /ven
 sudo chmod -R 770 /sec
-
-## Remover permissões de leitura, escrita e execução em diretórios de departamentos que não pertencem
-sudo chmod -R 500 /adm
-sudo chmod -R 500 /ven
-sudo chmod -R 500 /sec
