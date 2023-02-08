@@ -3,122 +3,19 @@
 echo "Starting..."
 
 # ---
-# Excluir diretórios, arquivos, grupos e usuários criados anteriormente
+# Chama o script que exclui antigos diretórios, arquivos, grupos e usuários anteriores
 
-## Excluir todos os usuários, exceto o usuário root
-echo "Excluindo usuários"
-for user in $(ls /home); do
-  if [ $user != "root" ]; then
-    sudo userdel -r $user
-  fi
-done
-
-## Excluir todos os grupos com id superior a 999 e menor que 1100
-echo "Excluindo grupos"
-for group in $(cut -d: -f1 /etc/group); do
-  id=$(getent group $group | cut -d: -f3)
-  if [ $id -gt 999 ] && [ $id -lt 1100 ]; then
-    if [ $group != "sync" ]; then
-      sudo groupdel $group
-    fi
-  fi
-done
-
-## Excluir todas as pastas dos usuários
-echo "Excluindo pastas"
-for user in $(ls /home); do
-  sudo rm -rf /home/$user
-done
+./modules/exclude_past_gud.sh
 
 # ---
-# Criar diretórios, grupos e usuários
+# Chama o script que criar novos diretórios, grupos e usuários
 
-# Lendo o arquivo
-
-if [[ ! -r "config.txt" ]]; then
-  echo "Não foi possível ler o arquivo config.txt"
-  exit 1
-fi
-
-echo "Lendo o arquivo config.txt"
-
-declare -A directories
-declare -A groups
-declare -A users
-
-echo "diretórios: $directories"
-echo "grupos: $groups"
-echo "usuários: $users"
-
-section=""
-i=0
-
-while read line; do
-  echo "$line"
-  if [[ $line =~ ^# ]]; then
-    echo "primeiro if"
-    ## Verificando se é uma linha de diretórios
-    if [[ "$line" =~ "^#.*pastas.*" ]]; then
-      echo "if do pastas"
-      section="directories"
-      i=0
-    fi
-  else
-    if [ "$section" == "directories" ]; then
-      directories[i]=$line
-      i=$((i + 1))
-    fi
-  fi
-done < config.txt
-
-echo "diretórios: ${directories[@]}"
-echo "grupos: $groups"
-echo "usuários: $users"
-
-## Criando diretórios
-echo "Criando diretórios"
-for dir in "${!directories[@]}"; do
-    sudo mkdir -p "/$dir"
-    echo "Criado $dir"
-done
-
-## Criando grupos
-echo "Criando grupos"
-for group in "${!groups[@]}"; do
-    sudo groupadd "$group"
-    echo "Criado $group"
-done
-
-## Criando usuários e adicionando a grupo
-echo "Criando usuários..."
-for user in "${!users[@]}"; do
-    sudo useradd $user
-    group=$(getent group ${groups[${users[$user]}]} | awk -F: '{print $1}')
-    sudo usermod -aG $group $user
-    echo "Criado $user"
-done
+./modules/create_new_gud.sh
 
 # ---
-# Definir dono das pastas
+# Chama o script que altera as permissões das novas pastas
 
-## Mudar dono de todos os diretórios criados para root
-sudo chown -R root:root /publico
-sudo chown -R root:root /adm
-sudo chown -R root:root /ven
-sudo chown -R root:root /sec
-
-## Conceder permissões a todos os usuários dentro do diretório publico
-sudo chmod -R 777 /publico
-
-## Conceder permissões aos usuários dentro de seus respectivos diretórios
-sudo chmod -R 770 /adm
-sudo chmod -R 770 /ven
-sudo chmod -R 770 /sec
-
-## Remover permissões de leitura, escrita e execução em diretórios de departamentos que não pertencem
-sudo chmod -R 500 /adm
-sudo chmod -R 500 /ven
-sudo chmod -R 500 /sec
+./modules/change_mermissions.sh
 
 # ---
 

@@ -45,6 +45,8 @@ Operações:
 
 # Explicando o script
 
+REESCREVER!###########################################
+
 O script "new_iac.sh" é um shell script que é utilizado para automatizar a criação de diretórios, grupos e usuários em um sistema operacional baseado em Unix.
 
 Ele começa com a definição do arquivo de configuração, que deve estar na mesma pasta do script. O arquivo de configuração, chamado "config.txt", contém as informações sobre os diretórios, grupos e usuários a serem criados.
@@ -67,15 +69,18 @@ Como root, vá para a raiz e crie uma pasta para receber os arquivos necessário
 
 Faça o download dos arquivos necessários no GitHub:
 
+REESCREVER!###########################################
+
     > wget https://raw.githubusercontent.com/jhonesaly/linux-study/master/project_iac/config.txt
     > wget https://raw.githubusercontent.com/jhonesaly/linux-study/master/project_iac/new_iac.sh
 
-Atribua a possibilidade de ler, editar e executar os arquivos:
+REESCREVER!###########################################
 
-    > chmod 700 config.txt
-    > chmod 700 new_iac.sh
+Atribua a possibilidade de ler, editar e executar os arquivos na pasta project_iac:
 
-Abra o arquivo config.txt para definir o que será criado por meio do comando no prompt:
+    > chmod -R 775 project_iac
+
+Entre na pasta do projeto e abra o arquivo config.txt para definir o que será criado por meio do comando no prompt:
 
     > nano config.txt
 
